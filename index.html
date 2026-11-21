@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MI Mahin</title>
+<meta name="description" content="Portfolio of MI Mahin: Linux, networking, Python and web development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS: split into styles.css if you like ===== */
+:root{--bg:#040711;--bg2:#091124;--cy:#00e5ff;--cy2:#22d3ee;--bl:#3b82f6;--pu:#a855f7;--tx:#f1f5f9;--mu:#94a3b8;--mu2:#cbd5e1;--glass:rgba(12,22,48,.58);--bd:rgba(34,211,238,.3)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font:400 16px/1.6 Poppins,Inter,system-ui,sans-serif;color:var(--tx);background:linear-gradient(180deg,var(--bg),var(--bg2) 50%,var(--bg));overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
+.ic{display:inline-flex}.ic svg{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.c{color:var(--cy)}
+.glass{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:18px;box-shadow:0 0 30px rgba(34,211,238,.08),inset 0 0 24px rgba(168,85,247,.07)}
+h1,h2{line-height:1.15;font-weight:700}
+h2{font-size:clamp(2rem,4.5vw,3rem)}
+.sub{color:var(--mu2);font-size:1.15rem;margin-top:.4rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.7rem 1.6rem;border-radius:999px;border:1.5px solid var(--cy);background:rgba(0,229,255,.07);color:var(--tx);font-weight:500;box-shadow:0 0 18px rgba(0,229,255,.3);transition:.25s}
+.btn:hover{background:rgba(0,229,255,.2);box-shadow:0 0 28px rgba(0,229,255,.55)}
+.round{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(8,16,38,.8);border:1px solid var(--bd);transition:.25s}
+.round:hover{border-color:var(--cy);box-shadow:0 0 16px rgba(0,229,255,.5);color:var(--cy)}
+.round .ic svg{width:22px;height:22px}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(4,7,17,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(34,211,238,.12)}
+.logo{font-size:1.9rem;font-weight:800;letter-spacing:-.04em}
+.logo b:first-child{background:linear-gradient(135deg,var(--cy),var(--bl));-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo b:last-child{color:var(--pu);text-shadow:0 0 14px var(--pu)}
+.links{display:flex;gap:2.2rem;font-size:.9rem}
+.links a{color:var(--mu2);padding:.3rem 0;border-bottom:2px solid transparent;transition:.2s}
+.links a:hover,.links a.on{color:var(--cy);border-color:var(--cy)}
+.cta{padding:.45rem 1.2rem;font-size:.85rem}
+.burger{display:none;background:none;border:1px solid var(--bd);border-radius:10px;width:42px;height:42px;place-items:center}
+@media(max-width:860px){
+.burger{display:grid}.cta{display:none}
+.links{position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;background:rgba(4,7,17,.96);padding:.5rem 5vw 1rem;display:none}
+.links.open{display:flex}.links a{padding:.8rem 0}}
+/* sections */
+.s{position:relative;overflow:hidden;padding:110px 6vw 90px}
+.s>.in{position:relative;z-index:2;max-width:1150px;margin:auto}
+.bgsvg{position:absolute;left:0;bottom:0;width:100%;height:42%;z-index:1;pointer-events:none}
+/* hero (screens 1 + 6) */
+.hero{min-height:100svh;display:grid;align-items:center}
+.hero .in{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:5vw;align-items:center;width:100%}
+#home{background:radial-gradient(circle at 18% 30%,rgba(59,130,246,.3),transparent 45%),radial-gradient(circle at 80% 90%,rgba(168,85,247,.35),transparent 50%),linear-gradient(#050a22,#0b1038 60%,#1a1450)}
+#about{background:radial-gradient(circle at 75% 85%,rgba(0,229,255,.22),transparent 50%),linear-gradient(#050a22,#0a1640 70%,#0f2458);min-height:92svh}
+.stars{position:absolute;inset:0;background:radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 120px,#cbd5e1,transparent),radial-gradient(1.5px 1.5px at 160px 60px,#fff,transparent),radial-gradient(1px 1px at 240px 180px,#fff,transparent);background-size:260px 220px;opacity:.7}
+.moon{position:absolute;top:16%;right:36%;width:20px;height:20px;border-radius:50%;box-shadow:6px 3px 0 0 #dbeafe;filter:drop-shadow(0 0 8px #93c5fd)}
+.portrait{position:relative;aspect-ratio:1;width:100%;max-width:400px;margin:auto}
+.portrait .pic{position:absolute;inset:11%;border-radius:50%;overflow:hidden;background:#0b1a3a}
+.portrait .pic svg,.portrait .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hud{position:absolute;inset:0;filter:drop-shadow(0 0 10px rgba(0,229,255,.6))}
+.hud .spin{transform-origin:50% 50%;animation:spin 24s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rail{position:absolute;left:2vw;top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;gap:.7rem}
+.rail .round{width:42px;height:42px}
+h1{font-size:clamp(2.6rem,6.5vw,4.6rem);font-weight:800;letter-spacing:-.01em}
+.role{font-size:clamp(1rem,2vw,1.35rem);margin:.6rem 0 1.6rem;color:var(--tx)}
+.quote{display:flex;gap:.9rem;align-items:center;padding:1rem 1.4rem;max-width:420px;font-size:1.05rem}
+.quote .ic svg{width:34px;height:34px;color:var(--cy2)}
+.tag{position:absolute;left:6vw;bottom:34px;z-index:3;font-size:.85rem;color:var(--cy)}
+.tag::after{content:"";display:block;width:min(260px,40vw);height:1px;margin-top:.7rem;background:linear-gradient(90deg,var(--cy),transparent);box-shadow:0 0 8px var(--cy)}
+.down{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;width:54px;height:54px;border:1.5px solid var(--cy);box-shadow:0 0 18px rgba(0,229,255,.5);color:var(--cy)}
+.pills{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0 1.8rem}
+.pills span{padding:.25rem 1rem;border-radius:999px;font-size:.85rem;background:rgba(59,130,246,.2);border:1px solid rgba(96,165,250,.45)}
+.bio{max-width:420px;color:var(--mu2)}
+@media(max-width:860px){
+.hero .in{grid-template-columns:1fr;text-align:center;gap:2rem}
+.rail{position:static;transform:none;flex-direction:row;justify-content:center;margin:1.4rem 0 0}
+.quote,.bio{margin-inline:auto;text-align:left}.pills{justify-content:center}.moon{right:12%}
+.tag{left:50%;transform:translateX(-50%);bottom:90px;white-space:nowrap}.tag::after{margin-inline:auto}}
+/* skills */
+#skills{padding-bottom:140px}
+.head{text-align:center}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:.8rem;color:var(--cy);font-size:.95rem;margin-bottom:.6rem}
+.eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:var(--cy)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;max-width:660px;margin:2.6rem auto 0}
+.sk{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.4rem;font-weight:500;transition:.25s}
+.sk:hover{transform:translateY(-3px);border-color:var(--cy)}
+.sk .ic svg{width:44px;height:44px}.sk .ic{flex:none;color:var(--cy2)}
+.waves{position:absolute;left:0;bottom:0;width:100%;height:240px;z-index:1;opacity:.9;pointer-events:none}
+@media(max-width:480px){.sk{flex-direction:column;text-align:center;padding:1rem .6rem}}
+/* spotlight */
+#spot{background:radial-gradient(circle at 75% 45%,rgba(0,229,255,.16),transparent 55%)}
+.spot{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:center;min-height:56vh}
+.spot .glass{padding:2.4rem}
+.spot h2{font-size:clamp(2.3rem,5vw,3.6rem)}
+.spot p{margin:1.2rem 0 1.8rem;color:var(--mu2);max-width:330px;font-size:1.1rem}
+.fade{animation:fade .5s}@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.laptop{width:100%;max-width:520px;margin:auto;display:block}
+.laptop .r{transform-origin:240px 150px;animation:spin 30s linear infinite}
+.dots{display:flex;justify-content:center;gap:.6rem;margin-top:1.6rem}
+.dots button{width:9px;height:9px;padding:0;border-radius:9px;border:0;background:#475a85;transition:.3s}
+.dots button.on{width:26px;background:var(--cy);box-shadow:0 0 10px var(--cy)}
+@media(max-width:860px){.spot{grid-template-columns:1fr}}
+/* experience */
+#exp{background:linear-gradient(90deg,#060b22 45%,#0a1a4a)}
+.racks{position:absolute;right:0;top:0;bottom:0;width:52%;z-index:1;opacity:.85;background:repeating-linear-gradient(90deg,transparent 0 40px,#0b1d52 40px 120px,#2563eb 120px 122px),linear-gradient(#0b1d52,#030a1e);-webkit-mask:linear-gradient(90deg,transparent,#000 60%);mask:linear-gradient(90deg,transparent,#000 60%)}
+.racks::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 14px,rgba(0,229,255,.55) 14px 16px);-webkit-mask:repeating-linear-gradient(90deg,#000 0 28px,transparent 28px 120px);mask:repeating-linear-gradient(90deg,#000 0 28px,transparent 28px 120px);filter:blur(1px)}
+.tl{position:relative;margin-top:2.6rem;max-width:620px;padding:1.6rem 1.6rem 1.6rem 3.2rem}
+.tl::before{content:"";position:absolute;left:1.1rem;top:2.2rem;bottom:2.2rem;width:2px;background:var(--cy);box-shadow:0 0 12px var(--cy)}
+.ev{position:relative;display:grid;grid-template-columns:130px 1fr;gap:1.2rem;align-items:center;padding:.9rem 0}
+.ev::before{content:"";position:absolute;left:-2.55rem;width:14px;height:14px;border-radius:50%;background:#07142e;border:3px solid var(--cy);box-shadow:0 0 12px var(--cy)}
+.ev i{font-style:normal;text-align:center;font-size:.85rem;padding:.3rem .5rem;border-radius:999px;border:1px solid var(--cy);background:rgba(0,229,255,.08)}
+.ev h3{font-size:1.05rem}.ev p{color:var(--mu2);font-size:.9rem}
+@media(max-width:560px){.ev{grid-template-columns:1fr;gap:.5rem}.ev i{justify-self:start}.racks{opacity:.35;width:100%}}
+/* achievements */
+#ach{background:radial-gradient(circle at 80% 40%,rgba(251,191,36,.2),transparent 45%)}
+.title{display:flex;align-items:center;gap:1rem}
+.title .ic svg{width:48px;height:48px;color:#fbbf24;filter:drop-shadow(0 0 10px rgba(251,191,36,.7))}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;max-width:680px;margin-top:2.4rem}
+.ac{padding:1.4rem 1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.4rem;font-weight:600;font-size:.95rem}
+.ac .ic svg{width:42px;height:42px;color:#fbbf24;filter:drop-shadow(0 0 8px rgba(251,191,36,.6))}
+.ac span{font-weight:400;font-size:.8rem;color:var(--mu2)}
+.ac.m .ic svg{fill:#fbbf24}
+.banner{max-width:680px;margin-top:1.4rem;padding:1.2rem;text-align:center;font-size:1.2rem;border-radius:999px;border-color:rgba(96,165,250,.6)}
+.trophy{position:absolute;right:4vw;top:50%;transform:translateY(-50%);width:min(36vw,420px);z-index:1;filter:drop-shadow(0 0 40px rgba(251,191,36,.55))}
+.sparks{position:absolute;right:0;top:0;width:55%;height:100%;z-index:1;background:radial-gradient(2px 2px at 20% 30%,#fde68a,transparent),radial-gradient(2px 2px at 60% 20%,#fbbf24,transparent),radial-gradient(1.5px 1.5px at 80% 60%,#fde68a,transparent),radial-gradient(2px 2px at 40% 80%,#fbbf24,transparent);animation:tw 3s ease-in-out infinite alternate}
+@keyframes tw{to{opacity:.35}}
+@media(max-width:860px){.trophy{position:relative;right:auto;top:auto;transform:none;width:60%;display:block;margin:2rem auto 0}.cards3{grid-template-columns:1fr}.sparks{display:none}}
+/* contact */
+#contact{background:radial-gradient(circle at 15% 60%,rgba(59,130,246,.22),transparent 50%)}
+.map{position:absolute;left:-4%;top:12%;width:48%;height:76%;z-index:1;background:radial-gradient(circle,rgba(34,211,238,.55) 1.2px,transparent 1.8px) 0 0/13px 13px;-webkit-mask:radial-gradient(ellipse at 40% 50%,#000,transparent 70%);mask:radial-gradient(ellipse at 40% 50%,#000,transparent 70%)}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2.4rem;align-items:start}
+.info{padding:1.4rem;display:grid;gap:1.1rem}
+.info a,.info div{display:flex;align-items:center;gap:1rem}
+.info .round{flex:none;color:var(--cy)}
+.info small{display:block;color:var(--cy);font-size:.8rem}.info span{font-size:.92rem;word-break:break-all}
+form{display:grid;gap:.8rem}
+.f input,.f textarea{width:100%;padding:.85rem 1rem;border-radius:12px;border:1px solid rgba(96,165,250,.3);background:rgba(10,20,48,.7);color:var(--tx);font:inherit}
+.f textarea{min-height:130px;resize:vertical}
+.f input::placeholder,.f textarea::placeholder{color:var(--mu)}
+.f.bad input,.f.bad textarea{border-color:#f87171}
+.err{display:block;color:#fca5a5;font-size:.8rem;min-height:0}
+.send{justify-content:center;border:0;padding:.9rem;border-radius:12px;background:linear-gradient(90deg,#3b82f6,#a855f7);font-weight:600;box-shadow:0 0 24px rgba(99,102,241,.5)}
+.send:hover{filter:brightness(1.15)}
+.ok{display:none;padding:1rem;border-radius:12px;background:rgba(34,197,94,.14);border:1px solid rgba(74,222,128,.5);color:#bbf7d0}
+@media(max-width:860px){.cgrid{grid-template-columns:1fr}.map{width:100%;opacity:.5}}
+/* thanks */
+#thanks{text-align:center;min-height:90svh;display:grid;align-items:center;background:radial-gradient(circle at 50% 100%,rgba(168,85,247,.28),transparent 60%)}
+#thanks p{font-size:1.2rem;color:var(--mu2);margin:1rem 0 .4rem}
+.heart{color:#f43f5e;font-size:1.5rem}
+.soc{display:flex;justify-content:center;gap:1rem;margin-top:1.6rem}
+.soc .round{width:54px;height:54px}
+.up{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;border:1.5px solid var(--cy);color:var(--cy);box-shadow:0 0 16px rgba(0,229,255,.4)}
+/* vision */
+#vision{min-height:78svh;display:grid;place-items:start center;text-align:center;padding-top:110px;background:linear-gradient(#0d1038 0%,#3b1d6e 35%,#c2410c 72%,#f59e0b 88%,#1c1030 88.1%)}
+#vision h2{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:600}
+#vision p{display:flex;align-items:center;justify-content:center;gap:1.2rem;color:var(--mu2);font-size:1.15rem;margin-top:.4rem}
+#vision p::before,#vision p::after{content:"";width:clamp(30px,9vw,110px);height:1px;background:linear-gradient(90deg,transparent,var(--cy2));box-shadow:0 0 8px var(--cy)}
+#vision p::after{transform:scaleX(-1)}
+.land{position:absolute;inset:auto 0 0;width:100%;height:55%;z-index:1}
+footer{background:#0a0714;text-align:center;font-size:.8rem;color:var(--mu);padding:1rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- Icon sprite (inline, no external dependency) -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+<defs><linearGradient id="wg" x1="0" x2="1"><stop offset="0" stop-color="#a855f7"/><stop offset=".5" stop-color="#22d3ee"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset=".6" stop-color="#f59e0b"/><stop offset="1" stop-color="#92400e"/></linearGradient></defs>
+<symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.1-1.3-.3-2.5-1-3.5.3-1.2.3-2.4 0-3.5 0 0-1 0-3 1.5a13 13 0 0 0-8 0C6 2 5 2 5 2c-.3 1.1-.3 2.300 0 3.500A5.400 5.400 0 0 0 4 9c0 3.500 3 5.500 6 5.500-.4.500-.7 1.100-.9 1.700S8.900 17.400 9 18v4"/><path d="M9 18c-4.500 2-5-2-7-2"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+<symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.500 17a24 24 0 0 1 0-10 2 2 0 0 1 1.400-1.400 50 50 0 0 1 16.200 0A2 2 0 0 1 21.500 7a24 24 0 0 1 0 10 2 2 0 0 1-1.400 1.400 50 50 0 0 1-16.200 0A2 2 0 0 1 2.500 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.700 1.500-2.500 1-.9 1.500-2.200 1.500-3.500A6 6 0 0 0 6 8c0 1 .2 2.200 1.500 3.500.7.7 1.300 1.500 1.500 2.500"/><path d="M9 18h6M10 22h4"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+<symbol id="i-net" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.500"/><circle cx="12" cy="3.500" r="1.800"/><circle cx="20" cy="8" r="1.800"/><circle cx="20" cy="16" r="1.800"/><circle cx="12" cy="20.500" r="1.800"/><circle cx="4" cy="16" r="1.800"/><circle cx="4" cy="8" r="1.800"/><path d="M12 9.500V5.300M14 10.800l4.400-1.900M14 13.200l4.400 1.900M12 14.500v4.200M10 13.200l-4.400 1.900M10 10.800 5.600 8.900"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.500a2.500 2.500 0 0 1 0-5H6M18 9h1.500a2.500 2.500 0 0 0 0-5H18M4 22h16M10 14.700V17c0 .6-.5 1-1 1.200C7.800 18.800 7 20.200 7 22M14 14.700V17c0 .6.500 1 1 1.200 1.200.6 2 2 2 3.800"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.100 6.300 6.900 1-5 4.900 1.200 6.800L12 17.800 5.800 21l1.200-6.800-5-4.900 6.900-1z"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.500 13 17 22l-5-3-5 3 1.500-9"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
+<symbol id="i-py" viewBox="0 0 32 32"><g stroke="none"><path d="M16 3c-6 0-6 2-6 4v3h6v1H7c-3 0-5 2-5 6s2 6 5 6h3v-4c0-3 2-4 4-4h6c2 0 3-1 3-3V7c0-3-4-4-8-4z" fill="#3b82f6"/><path d="M16 29c6 0 6-2 6-4v-3h-6v-1h9c3 0 5-2 5-6s-2-6-5-6h-3v4c0 3-2 4-4 4h-6c-2 0-3 1-3 3v5c0 3 4 4 8 4z" fill="#fcd34d"/><circle cx="12.500" cy="7" r="1.200" fill="#fff"/><circle cx="19.500" cy="25" r="1.200" fill="#fff"/></g></symbol>
+<symbol id="i-tux" viewBox="0 0 64 80"><g stroke="none"><ellipse cx="32" cy="46" rx="21" ry="29" fill="#10131c"/><ellipse cx="32" cy="54" rx="13" ry="19" fill="#f4f4f4"/><circle cx="25" cy="22" r="4.500" fill="#fff"/><circle cx="39" cy="22" r="4.500" fill="#fff"/><circle cx="26" cy="22" r="2" fill="#000"/><circle cx="38" cy="22" r="2" fill="#000"/><path d="M25 29h14l-7 8z" fill="#f7b32b"/><ellipse cx="20" cy="75" rx="11" ry="4.500" fill="#f7b32b"/><ellipse cx="44" cy="75" rx="11" ry="4.500" fill="#f7b32b"/></g></symbol>
+<symbol id="waves" viewBox="0 0 1440 240" preserveAspectRatio="none"><g fill="none" stroke="url(#wg)"><path d="M0 150C200 60 320 220 540 130S840 40 1020 140s300 30 420-40" stroke-width="2.500"/><path d="M0 170C220 90 340 230 560 150S860 70 1040 160s290 20 400-30" stroke-width="1.500" opacity=".7"/><path d="M0 190C240 120 360 240 580 170S880 100 1060 180s280 10 380-20" stroke-width="1.500" opacity=".5"/><path d="M0 210C260 150 380 250 600 190S900 130 1080 200s270 0 360-10" stroke-width="1" opacity=".4"/></g></symbol>
+</svg>
+
+<!-- Reusable templates (portrait is shared by screens 1 and 6) -->
+<template id="portrait">
+  <div class="portrait">
+    <div class="pic">
+      <!-- Fallback avatar: always visible if the photo is missing -->
+      <svg viewBox="0 0 100 100"><defs><linearGradient id="av" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e3a8a"/><stop offset="1" stop-color="#4c1d95"/></linearGradient></defs><rect width="100" height="100" fill="url(#av)"/><circle cx="50" cy="38" r="17" fill="#c9a98a"/><path d="M33 34c0-14 34-14 34 0-4-6-30-6-34 0z" fill="#10131c"/><path d="M10 100c2-26 20-38 40-38s38 12 40 38z" fill="#0b1020"/></svg>
+      <!-- REPLACE: put your photo at assets/mahin.jpg (square crop works best) -->
+      <img src="assets/mahin.jpg" alt="Portrait of MI MAHIN" onerror="this.remove()">
+    </div>
+    <svg class="hud" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke-linecap="round">
+      <circle cx="50" cy="50" r="46" stroke="#22d3ee" stroke-width=".8" opacity=".6"/>
+      <g class="spin"><path d="M50 4A46 46 0 0 1 96 50" stroke="#00e5ff" stroke-width="2.200"/><path d="M96 50A46 46 0 0 1 60 95" stroke="#a855f7" stroke-width="2.200"/><path d="M40 95A46 46 0 0 1 4 50" stroke="#3b82f6" stroke-width="2.200"/><path d="M8 38A46 46 0 0 1 30 10" stroke="#00e5ff" stroke-width="1.400" stroke-dasharray="1 3"/></g>
+      <circle cx="50" cy="50" r="40" stroke="#a855f7" stroke-width="1.500"/>
+    </svg>
+  </div>
+</template>
+
+<!-- ===== Top navigation ===== -->
+<nav>
+  <a href="#home" class="logo" aria-label="MI MAHIN – home"><b>M</b><b>I</b></a>
+  <div class="links" id="links">
+    <a href="#home" data-n="home">Home</a><a href="#skills" data-n="skills">Skills</a><a href="#exp" data-n="exp">Experience</a><a href="#ach" data-n="ach">Achievements</a><a href="#contact" data-n="contact">Contact</a>
+  </div>
+  <a href="#contact" class="btn cta">Let’s Talk <span class="ic" data-i="send"></span></a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span class="ic" data-i="menu"></span></button>
+</nav>
+
+<main>
+<!-- ===== Screen 1: Hero ===== -->
+<section id="home" class="s hero" data-n="home">
+  <div class="stars"></div><div class="moon"></div>
+  <svg class="bgsvg" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0 300V190l120-60 110 70 140-110 150 120 120-80 160 100 140-130 170 120 130-70 200 110v140z" fill="#0a1236"/><path d="M0 300v-60l60-30 40 30 60-50 40 50 70-40 50 40 70-60 80 60 50-30 70 60v80zM1100 300l60-70 50 40 70-60 80 70 80-30v50z" fill="#050818"/></svg>
+  <div class="rail" data-soc></div>
+  <div class="in">
+    <div data-portrait></div>
+    <div>
+      <!-- REPLACE: your name -->
+      <h1>MI <span class="c"> MAHIN</span></h1>
+      <p class="role">Network Engineer • Developer • Leader </p>
+      <div class="quote glass"><span class="ic" data-i="bulb"></span><p>“Dream big, build smart, and keep going….” 👆</p></div>
+    </div>
+  </div>
+  <div class="tag">Innovate • Connect • Grow</div>
+  <button class="round down" data-go="#skills" aria-label="Scroll down"><span class="ic" data-i="down"></span></button>
+</section>
+
+<!-- ===== Screen 2: Skills ===== -->
+<section id="skills" class="s" data-n="skills">
+  <div class="in head">
+    <div class="eyebrow">My Skills</div>
+    <h2>Technologies I <span class="c">Work With</span></h2>
+    <div class="grid2">
+      <div class="sk glass"><span class="ic"><svg viewBox="0 0 64 80"><use href="#i-tux"/></svg></span>Linux</div>
+      <div class="sk glass"><span class="ic" data-i="net"></span>Networking</div>
+      <div class="sk glass"><span class="ic"><svg viewBox="0 0 32 32"><use href="#i-py"/></svg></span>Python</div>
+      <div class="sk glass"><span class="ic" data-i="globe"></span>Web Development</div>
+      <div class="sk glass"><span class="ic" data-i="server"></span>Servers &amp; DevOps</div>
+      <div class="sk glass"><span class="ic" data-i="bulb"></span>Problem Solving</div>
+    </div>
+  </div>
+  <svg class="waves" aria-hidden="true"><use href="#waves"/></svg>
+</section>
+
+<!-- ===== Screen 3: Spotlight carousel ===== -->
+<section id="spot" class="s" data-n="skills">
+  <div class="in">
+    <div class="spot">
+      <div class="glass" id="spotText"></div>
+      <svg class="laptop" viewBox="0 0 480 320" aria-hidden="true">
+        <g class="r" fill="none" stroke="#22d3ee"><circle cx="240" cy="150" r="140" stroke-dasharray="4 10" opacity=".5"/><path d="M100 150a140 140 0 0 1 140-140" stroke-width="3" stroke="#00e5ff"/><circle cx="240" cy="150" r="115" opacity=".3"/></g>
+        <path d="M120 42h250l22 170H98z" fill="#06142f" stroke="#8aa9d6" stroke-width="7" stroke-linejoin="round"/>
+        <path d="M130 52h230l18 150H112z" fill="#0b2250"/>
+        <svg x="205" y="66" width="90" height="112" viewBox="0 0 64 80"><use href="#i-tux"/></svg>
+        <path d="M64 216h362l36 42H28z" fill="#a8bad6"/><path d="M28 258h434v6H28z" fill="#5f7399"/><path d="M96 228h300M96 238h300" stroke="#6b7fa6" stroke-width="3"/>
+      </svg>
+    </div>
+    <div class="dots" id="dots" role="tablist" aria-label="Spotlight slides"></div>
+  </div>
+</section>
+
+<!-- ===== Screen 4: Experience ===== -->
+<section id="exp" class="s" data-n="exp">
+  <div class="racks" aria-hidden="true"></div>
+  <div class="in">
+    <h2>My <span class="c">Experience</span></h2>
+    <p class="sub">Professional Journey</p>
+    <!-- REPLACE: dates, roles and descriptions with your real history -->
+    <div class="tl glass">
+      <div class="ev"><i>2024 – Present</i><div><h3>Network Engineer &amp; Developer</h3><p>Managing networks, developing solutions, and building systems.</p></div></div>
+      <div class="ev"><i>2022 – 2024</i><div><h3>System Administrator</h3><p>Linux, servers and IT infrastructure.</p></div></div>
+      <div class="ev"><i>2021 – 2022</i><div><h3>Junior Developer</h3><p>Web &amp; Python development.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Screen 5: Achievements ===== -->
+<section id="ach" class="s" data-n="ach">
+  <div class="sparks"></div>
+  <svg class="trophy" viewBox="0 0 200 240" aria-hidden="true"><path d="M50 30h100v50c0 36-22 58-50 58S50 116 50 80z" fill="url(#gold)"/><path d="M50 44H22c0 30 12 46 34 52M150 44h28c0 30-12 46-34 52" fill="none" stroke="#f59e0b" stroke-width="10" stroke-linecap="round"/><path d="M88 136h24v34H88z" fill="#d97706"/><path d="M62 170h76l10 24H52z" fill="url(#gold)"/><path d="M48 194h104v30H48z" fill="#3b2410"/><path d="M70 50c0 30 8 50 30 70" stroke="#fff7d6" stroke-width="5" opacity=".5" fill="none" stroke-linecap="round"/></svg>
+  <div class="in">
+    <div class="title"><span class="ic" data-i="trophy"></span><div><h2>My <span class="c">Achievements</span></h2><p class="sub">Milestones I’m Proud Of</p></div></div>
+    <!-- REPLACE: placeholder achievements; edit titles, metrics and institutions to match your real record -->
+    <div class="cards3">
+      <!--<div class="ac m glass"><span class="ic" data-i="star"></span>Top Contributor on GitHub<span>500+ Stars</span></div>-->
+      <div class="ac glass"><span class="ic" data-i="award"></span>CS50 Certified<span>Computer science</span></div>
+      <div class="ac glass"><span class="ic" data-i="cap"></span>SSC GPA 4.50<span>Tamirul Millat Madrasah</span></div>
+    </div>
+    <div class="banner glass">“Keep pushing forward!”</div>
+  </div>
+</section>
+
+<!-- ===== Screen 6: About / Hire me ===== -->
+<section id="about" class="s hero" data-n="home">
+  <div class="stars"></div>
+  <svg class="bgsvg" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0 300V210h50v-40h40v50h40v-90h36v90h50v-60h40v70h60v-110h30v110h50v-50h50v60h40v-130h34v130h46v-80h50v90h60v-70h40v-100h30v100h50v-60h60v60h50v-120h36v120h50v-40h50v40h60v-90h40v90h70V300z" fill="#060b26" stroke="#22d3ee" stroke-width="1.500" opacity=".95"/></svg>
+  <div class="rail" data-soc></div>
+  <div class="in">
+    <div data-portrait></div>
+    <div>
+      <h2 style="font-size:clamp(2.6rem,6.5vw,4.6rem);font-weight:800">MAHIN <span class="c">ISLAM</span></h2>
+      <p class="role">Network Engineer • Developer • Builder</p>
+      <p class="bio">A passionate learner, problem solver, and future entrepreneur.</p>
+      <div class="pills"><span>Linux</span><span>Networking</span><span>Python</span><span>Web</span></div>
+      <a href="#contact" class="btn">Hire Me / Contact Me <span class="ic" data-i="right"></span></a>
+    </div>
+  </div>
+  <div class="tag">Innovate • Connect • Grow</div>
+</section>
+
+<!-- ===== Screen 7: Contact ===== -->
+<section id="contact" class="s" data-n="contact">
+  <div class="map" aria-hidden="true"></div>
+  <div class="in">
+    <div class="head"><div class="title" style="justify-content:center"><span class="ic c" data-i="mail" style="font-size:2rem"></span><h2><span class="c">Contact Me</span></h2></div><p class="sub c" style="font-size:1rem">Let’s Work Together</p></div>
+    <div class="cgrid">
+      <!-- REPLACE: real contact details (also edit LINKS in the script below) -->
+      <div class="info glass">
+        <a href="mimahin60@gmail.com"><span class="round ic" data-i="mail"></span><div><small>Email</small><span>mimahin60@gmail.com</span></div></a>
+        <a href="https://github.com/mihin60" target="_blank" rel="noopener"><span class="round ic" data-i="github"></span><div><small>GitHub</small><span>github.com/mihin60</span></div></a>
+        <a href="https://www.linkedin.com/in/mahdi-islam-03b53b311/" target="_blank" rel="noopener"><span class="round ic" data-i="linkedin"></span><div><small>LinkedIn</small><span>linkedin.com/in/mahdi-islam-03b53b311/</span></div></a>
+        <div><span class="round ic" data-i="pin"></span><div><small>Location</small><span>Gazipur, Dhaka, Bangladesh</span></div></div>
+      </div>
+      <form id="form" novalidate>
+        <div class="f"><input name="name" placeholder="Your Name" aria-label="Your Name" autocomplete="name"><span class="err"></span></div>
+        <div class="f"><input name="email" type="email" placeholder="Your Email" aria-label="Your Email" autocomplete="email"><span class="err"></span></div>
+        <div class="f"><textarea name="msg" placeholder="Your Message" aria-label="Your Message"></textarea><span class="err"></span></div>
+        <button class="btn send" type="submit">Send Message <span class="ic" data-i="right"></span></button>
+        <div class="ok" id="ok" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Screen 8: Thank you ===== -->
+<section id="thanks" class="s" data-n="contact">
+  <svg class="waves" aria-hidden="true" style="height:300px"><use href="#waves"/></svg>
+  <div class="in">
+    <h2>Thanks for Visiting!</h2>
+    <p>Let’s build something amazing together.</p><div class="heart" aria-hidden="true">♥</div>
+    <div class="soc" data-soc></div>
+  </div>
+  <button class="round up" data-go="#home" aria-label="Back to top"><span class="ic" data-i="up"></span></button>
+</section>
+
+<!-- ===== Screen 9: Vision banner ===== -->
+<section id="vision" class="s" data-n="contact">
+  <svg class="land" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <path d="M0 400V300l200-30 260 20 300-20 320 30 360-20v120z" fill="#241038" opacity=".9"/>
+    <path d="M0 400V330c200-14 380-6 520-4 40 0 70-16 120-18 120 0 160 14 200 14 190 0 400 4 600-6v84z" fill="#0d0716"/>
+    <!-- person sitting on ledge -->
+    <path d="M770 330c0-20 4-36 14-44-6-4-6-16 2-18 8-2 12 8 8 14 8 6 20 16 26 32l22 8-4 8-26-4-10 12h-20z" fill="#05030a"/>
+    <path d="M0 400V120c10-10 28-14 36-30 4-20 24-30 44-24 16-14 44-8 50 12 14 6 22 22 12 36 14 8 12 28-4 34 12 6 8 22-8 22V400z" fill="#05030a" opacity=".95"/>
+  </svg>
+  <div class="in"><h2>MI <span class="c">MAHIN</span></h2><p>Dream • Build • Inspire</p></div>
+</section>
+</main>
+<footer>© <span id="yr"></span> MI MAHIN</footer>
+
+<script>
+/* ===== JS: split into main.js if you like ===== */
+// REPLACE: social links (used by the rails and the thank-you row)
+const LINKS={github:'https://github.com/mihin60',linkedin:'https://www.linkedin.com/in/mahdi-islam-03b53b311/',youtube:'#',email:'mailto:mimahin60@gmail.com'};
+const ICONS={github:'github',linkedin:'linkedin',youtube:'youtube',email:'mail'};
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+// Socials + shared portrait
+$$('[data-soc]').forEach(el=>el.innerHTML=Object.keys(LINKS).map(k=>`<a class="round ic" href="${LINKS[k]}" aria-label="${k}" ${k==='email'||LINKS[k]==='#'?'':'target="_blank" rel="noopener"'} data-i="${ICONS[k]}"></a>`).join(''));
+$$('[data-portrait]').forEach(el=>el.appendChild($('#portrait').content.cloneNode(true)));
+// Inline icons from the sprite
+$$('[data-i]').forEach(e=>e.innerHTML=`<svg viewBox="0 0 24 24"><use href="#i-${e.dataset.i}"/></svg>`);
+$('#yr').textContent=new Date().getFullYear();
+
+// Smooth-scroll buttons
+$$('[data-go]').forEach(b=>b.onclick=()=>$(b.dataset.go).scrollIntoView({behavior:'smooth'}));
+
+// Mobile menu
+const links=$('#links'),burger=$('#burger');
+burger.onclick=()=>burger.setAttribute('aria-expanded',links.classList.toggle('open'));
+links.onclick=e=>{if(e.target.tagName==='A'){links.classList.remove('open');burger.setAttribute('aria-expanded',false)}};
+
+// Active nav link on scroll
+const navA=$$('.links a'),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)navA.forEach(a=>a.classList.toggle('on',a.dataset.n===e.target.dataset.n))}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section[data-n]').forEach(s=>io.observe(s));
+
+// Spotlight carousel (Screen 3) – REPLACE slide text here
+const slides=[
+ ['Linux & Networking','From servers to switches, I love to build and manage reliable systems.'],
+ ['Full-Stack & Python','From scripts to web apps, I turn ideas into software that works.'],
+ ['Cloud & Infrastructure','Virtualization and automation that keep services running.']
+];
+let cur=0,timer;const dots=$('#dots'),st=$('#spotText');
+dots.innerHTML=slides.map((_,i)=>`<button role="tab" aria-label="Slide ${i+1}"></button>`).join('');
+function show(i){cur=i;const[t,p]=slides[i];
+ st.innerHTML=`<div class="fade"><h2>${t.replace(/(&.*)/,'<span class="c">$1</span>')}</h2><p>${p}</p><a class="btn" href="#contact">Explore More <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-right"/></svg></span></a></div>`;
+ $$('button',dots).forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-selected',j===i)})}
+function auto(){clearInterval(timer);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)timer=setInterval(()=>show((cur+1)%slides.length),6500)}
+$$('button',dots).forEach((b,i)=>b.onclick=()=>{show(i);auto()});
+show(0);auto();
+
+// Contact form (client-side validation only – connect to Formspree/EmailJS/your API to actually send)
+const form=$('#form'),ok=$('#ok');
+form.onsubmit=e=>{e.preventDefault();ok.style.display='none';
+ const d=new FormData(form),name=d.get('name').trim(),mail=d.get('email').trim(),msg=d.get('msg').trim();
+ const rules=[[name.length<2,'Enter your name.'],[!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail),'Enter a valid email, like you@example.com.'],[msg.length<10,'Write at least 10 characters.']];
+ let good=true;$$('.f',form).forEach((f,i)=>{const bad=rules[i][0];f.classList.toggle('bad',bad);$('.err',f).textContent=bad?rules[i][1]:'';if(bad)good=false});
+ if(!good)return;
+ // TODO: send {name,mail,msg} to your backend here
+ ok.textContent=`Thanks, ${name.split(' ')[0]}! Your message is ready to send. I’ll get back to you soon.`;ok.style.display='block';form.reset();
+};
+</script>
+</body>
+</html>
